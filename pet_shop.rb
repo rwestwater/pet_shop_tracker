@@ -44,7 +44,18 @@ end
 #   return pets[:pets].delete(name)
 # end
 
-
 def add_pet_to_stock(hash, name)
   hash[:pets].push(name)
+end
+
+def customer_cash(person)
+  person[:cash]
+end
+
+def remove_customer_cash(person, value)
+  person[:cash] -= value
+end
+
+def customer_pet_count(pet)
+   pet[:pets].count
 end
