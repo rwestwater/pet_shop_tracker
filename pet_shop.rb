@@ -76,13 +76,15 @@ def customer_can_afford_pet (customer, value)
 end
 
 def sell_pet_to_customer(hash, pet, customer)
-  for petsh in hash[:pets]
-    if petsh[:name] == pet
-      customer[:pets].push(petsh)
-      hash[:pets].delete(petsh)
+  for pets in hash[:pets]
+    if pets[:name] == pet
+      customer[:pets].push(pets)
+      hash[:pets].delete(pets)
       hash[:admin][:pets_sold] += customer[:pets].count
-      customer[:cash] -= petsh[:price]
-      hash[:admin][:total_cash] += petsh[:price]
+      customer[:cash] -= pets[:price]
+      hash[:admin][:total_cash] += pets[:price]
+    else
+      false
     end
   end
 end
