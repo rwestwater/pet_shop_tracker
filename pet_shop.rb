@@ -40,9 +40,10 @@ return nil
 end
 
 # revise this one, can't see why delete function wouldnt work
-# def remove_pet_by_name(pets, name)
-#   return pets[:pets].delete_at(i) if pets[:pets][1][:name] == name
-# end
+def remove_pet_by_name(pets, name)
+  # return pets[:pets].delete_at if pets[:pets][1][:name] == name
+  return pets[:pets].delete_if {|pets| name == name }
+end
 
 def add_pet_to_stock(hash, name)
   hash[:pets].push(name)
@@ -77,7 +78,9 @@ end
 
 def sell_pet_to_customer(hash, pet, customer)
   for pets in hash[:pets]
-    if pets[:name] == pet
+    if customer[:cash] <= pets[:price]
+      false
+    elsif pets[:name] == pet
       customer[:pets].push(pets)
       hash[:pets].delete(pets)
       hash[:admin][:pets_sold] += customer[:pets].count
