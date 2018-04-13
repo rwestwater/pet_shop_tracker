@@ -38,3 +38,13 @@ def find_pet_by_name(hash, name)
 end
 return nil
 end
+
+# revise this one, can't see why delete function wouldnt work
+# def remove_pet_by_name(pets, name)
+#   return pets[:pets].delete(name)
+# end
+
+
+def add_pet_to_stock(hash, name)
+  hash[:pets].push(name)
+end
